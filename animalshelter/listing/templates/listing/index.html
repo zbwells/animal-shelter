@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<!-- Template for the animal listing main page. -->
+<!-- If there are any animals in the database, loop through them and link to them. -->
+
+<html>
+
+<head>
+{% load static %}
+<title>Animal Listing</title>
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+<h1>Animal Listing</h1>
+{% if animal_list %}
+	{% for animal in animal_list %}
+		<a href="{% url 'detail' animal.id %}">
+		<h3>{{ animal.name }}</h3> 
+		<p>{{ animal.breed }}, {{ animal.status }}</p>
+		<img src="{{ animal.image.url }}"/><br/><br/>
+		</a>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No animals found.</p>
+{% endif %}
+</body>
+
+</html>

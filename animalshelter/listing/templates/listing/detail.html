@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<!-- Template for viewing information on a particular animal. -->
+
+<html>
+
+<head>
+{% load static %}
+<title>Animal Shelter - {{ animal.name }}</title>
+<link rel="stylesheet" href="{% static '/style.css' %}"/>
+</head>
+
+<body>
+<h1>{{ animal.name }}</h1>
+
+<!-- Right aligned image of animal -->
+<div class="clearfix">
+	<img class="floating" src="{{ animal.image.url }}"/>
+
+	<!-- Animal description -->
+	<p>{{ animal.notes }}</p>
+
+	<br>
+	<p><b>ID Number:</b> 	{{ animal.id_num  		}}</p>
+	<p><b>Species:</b>	  	{{ animal.species 		}}</p>
+	<p><b>Breed:</b>	  	{{ animal.breed   		}}</p>
+	<p><b>Weight:</b>	  	{{ animal.weight  		}}</p>
+	<p><b>Gender:</b>	  	{{ animal.gender  		}}</p>
+	<p><b>Intake Date:</b>	{{ animal.intake_date 	}}</p>
+	<p><b>Birth Date:</b>   {{ animal.estimated_dob }}</p>
+	<p><b>Status:</b>		{{ animal.status		}}</p>
+
+	<p><a href="{% url 'index' %}">Back to Animal Listing</a></p>
+</div>
+
+<br/>
+</body>
+
+</html>
