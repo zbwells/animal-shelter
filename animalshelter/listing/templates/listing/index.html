@@ -14,14 +14,27 @@
 <body>
 <h1>Animal Listing</h1>
 {% if animal_list %}
+<div class=cols>
+	<!-- Loop through every animal in the list and provide link to details page -->
 	{% for animal in animal_list %}
+	{% if animal.visible_on_website %}
+	<div>
 		<a href="{% url 'detail' animal.id %}">
-		<h3>{{ animal.name }}</h3> 
-		<p>{{ animal.breed }}, {{ animal.status }}</p>
-		<img src="{{ animal.image.url }}"/><br/><br/>
+			<h3>{{ animal.name }}</h3> 
+			<p>
+			{% if animal.breed %}
+				{{ animal.breed }}, 
+			{% endif %}
+			{{ animal.estimated_age }}
+			</p>
+			<img class="smaller" src="{{ animal.image.url }}"/>
+			<br/><br/>
 		</a>
+	</div>
+	{% endif %}
 	{% endfor %}
-	</ul>
+</div>
+
 {% else %}
 	<p>No animals found.</p>
 {% endif %}

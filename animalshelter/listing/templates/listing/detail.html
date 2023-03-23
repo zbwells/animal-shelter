@@ -27,10 +27,11 @@
 	<p><b>Weight:</b>	  	{{ animal.weight  		}}</p>
 	<p><b>Gender:</b>	  	{{ animal.gender  		}}</p>
 	<p><b>Intake Date:</b>	{{ animal.intake_date 	}}</p>
-	<p><b>Birth Date:</b>   {{ animal.estimated_dob }}</p>
-	<p><b>Status:</b>		{{ animal.status		}}</p>
+	<p><b>Estimated Age: </b>{{ animal.estimated_age }}</p>
 
+	<p><a href="{% url 'extra' animal.id %}">More Pictures and Information</a></p>
 	<p><a href="{% url 'index' %}">Back to Animal Listing</a></p>
+	
 </div>
 
 <br/>

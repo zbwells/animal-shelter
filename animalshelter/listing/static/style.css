@@ -27,6 +27,19 @@ a {
 	color: black
 }
 
+.cols {
+	column-count: 2;
+	column-width: auto;
+}
+
+.smaller {
+	object-fit: cover;
+	object-position: center;
+	height: 300px;
+	width: 300px;
+	max-width: 100%;
+}
+
 .floating {
 	margin: 10px 5px 5px 10%;
 	float: right;

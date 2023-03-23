@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!-- Template for viewing more information. -->
+
+<html>
+
+<head>
+{% load static %}
+<title>Animal Shelter - {{ animal.name }} - More Information</title>
+<link rel="stylesheet" href="{% static '/style.css' %}"/>
+</head>
+
+<body>
+<h1>{{ animal.name }}</h1>
+<h2>More Pictures and Information</h2>
+
+<!-- Right aligned image of animal -->
+<div class="clearfix">
+	{% if animal.picture_set %}
+		{% for picture in animal.picture_set.all %}
+			<img class="floating" src="{{ picture.image.url }}"/>
+		{% endfor %}
+	{% endif %}
+
+	<!-- List of boolean conditions related to the animal -->
+	<ul>
+	{% if animal.animaldetail.pregnant %} 
+		<li>Is pregnant</li> 
+	{% endif %}
+	
+	{% if animal.animaldetail.microchips %} 
+		<li>Is microchipped</li> 
+	{% endif %}
+	
+	{% if animal.animaldetail.good_with_people %} 
+		<li>Is good with people</li> 
+	{% endif %}
+	
+	{% if animal.animaldetail.good_with_same_species %} 
+		<li>Is good with other {{animal.species}}s</li> 
+	{% endif %}
+
+	{% if animal.animaldetail.bite_history %}
+		<li>Has a history of biting</li>
+	{% endif %}
+
+	{% if animal.animaldetail.surrendered_by_owner %}
+		<li>Was surrendered by owner</li>
+	{% endif %}
+
+	{% if animal.animaldetail.housebroken %}
+		<li>Is housebroken</li>
+	{% endif %}
+	</ul>
+
+	{% if animal.animaldetail.reason_for_surrender %}
+		<p><b>Reason for surrender: </b></p>
+		<p>{{animal.animaldetail.reason_for_surrender}}</p>
+		<br/>
+	{% endif %}
+
+	{% if animal.animaldetail.condition_of_teeth %}
+		<p><b>Condition of teeth: </b></p>
+		<p>{{animal.animaldetail.condition_of_teeth}}</p>
+		<br/>
+	{% endif %}
+
+	{% if animal.animaldetail.condition_of_skin %}
+		<p><b>Other conditions, such as skin conditions: </b></p>
+		<p>{{animal.animaldetail.condition_of_skin}}</p>
+		<br/>
+	{% endif %}
+	
+	<p><a href="{% url 'index' %}">Back to Animal Listing</a></p>
+</div>
+
+<br/>
+</body>
+
+</html>
