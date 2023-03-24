@@ -29,7 +29,10 @@
 	<p><b>Intake Date:</b>	{{ animal.intake_date 	}}</p>
 	<p><b>Estimated Age: </b>{{ animal.estimated_age }}</p>
 
+	{% if animal.animaldetail %}
 	<p><a href="{% url 'extra' animal.id %}">More Pictures and Information</a></p>
+	{% endif %}
+	
 	<p><a href="{% url 'index' %}">Back to Animal Listing</a></p>
 	
 </div>
