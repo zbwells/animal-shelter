@@ -19,6 +19,9 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+## For now, putting our admin site modifications here
+admin.site.site_header = "Animal Shelter Web Management"
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("listing/", include("listing.urls")),

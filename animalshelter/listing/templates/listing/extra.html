@@ -6,11 +6,18 @@
 
 <head>
 {% load static %}
-<title>Animal Shelter - {{ animal.name }} - More Information</title>
+<title>Animal Shelter - 
+{% if animal.name %}
+	{{ animal.name }} - More Information
+{% else %}
+	Error
+{% endif %}
+</title>
 <link rel="stylesheet" href="{% static '/style.css' %}"/>
 </head>
 
 <body>
+{% if animal %}
 <h1>{{ animal.name }}</h1>
 <h2>More Pictures and Information</h2>
 
@@ -70,10 +77,11 @@
 		<p>{{animal.animaldetail.condition_of_skin}}</p>
 		<br/>
 	{% endif %}
-	
-	<p><a href="{% url 'index' %}">Back to Animal Listing</a></p>
 </div>
-
+{% else %}
+	<h2>Animal's extra details are unviewable.</h2>
+	<p>Sorry.</p>
+{% endif %}
 <br/>
 </body>
 

@@ -11,7 +11,7 @@ Status, and other miscellaneous details.
 
 class Animal(models.Model):
     name = models.CharField(max_length=100)
-    id_num = models.IntegerField("ID Number")
+    id_num = models.IntegerField("ID Number", unique=True)
     species = models.CharField(max_length=50)
     breed = models.CharField(max_length=50)
 
