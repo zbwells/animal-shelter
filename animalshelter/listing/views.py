@@ -19,8 +19,24 @@ class IndexView(generic.ListView):
         default = Animal.objects.filter(
             ["visible_on_website", True]
         ).order_by("intake_date")
+        
+        try:
+            filter_value = self.request.GET.get("filter-by", "visible_on_website")
+            filter_query = self.request.GET.get("param", "True")
+            order = self.request.GET.get("order-by", "estimated_age")
+            query = [filter_value, filter_query]
 
-        return default
+            # Prevent user from making the page list non-visible animals
+            if query == ["visible_on_website", "False"]:
+                return default
+                
+            queryset = Animal.objects.filter(query).order_by(order)
+
+        # If the GET request is malformed, fall back on a default listing setup        
+        except (FieldError, ValidationError):
+            return default
+
+        return queryset
         
 
 class DetailView(generic.DetailView):
