@@ -27,7 +27,9 @@ class Animal(models.Model):
     )
     
     intake_date = models.DateField("Intake Date")
-    estimated_age = models.IntegerField(default=0)
+    
+    estimated_age = models.IntegerField("Estimated Age (Years)", default=0)
+    estimated_age_months = models.IntegerField("Estimated Age (Months)", default=0)
 
     image = models.FileField(upload_to="uploads/%Y/%m/", default="")
     notes = models.TextField(blank=True)

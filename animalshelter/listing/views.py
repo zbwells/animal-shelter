@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
-
 from django.core.exceptions import FieldError, ValidationError
 
 from .models import *
+from .forms import *
 
 ## Generic view for the index/animal listing
 class IndexView(generic.ListView):
@@ -21,22 +21,102 @@ class IndexView(generic.ListView):
         ).order_by("intake_date")
         
         try:
-            filter_value = self.request.GET.get("filter-by", "visible_on_website")
-            filter_query = self.request.GET.get("param", "True")
-            order = self.request.GET.get("order-by", "estimated_age")
-            query = [filter_value, filter_query]
+            filter_by_age = self.request.GET.get(
+                "filter_by_age",
+                "any-age"
+            )
 
-            # Prevent user from making the page list non-visible animals
-            if query == ["visible_on_website", "False"]:
-                return default
+            filter_by_species = self.request.GET.get(
+                "filter_by_species",
+                "any-species"
+            )
+            
+            order = self.request.GET.get("order", "intake_date")
+            
+            # Handle age order case
+            if order == "estimated_age":
+                order = ["estimated_age_months", "estimated_age"]
+            
+            queries = []
+            queries.append(["visible_on_website", True])
+
+            # Handle the age filter's special cases (so, all cases)
+            # These correlate to the options specified in forms.py
+            if filter_by_age == "any-age":
+                pass
                 
-            queryset = Animal.objects.filter(query).order_by(order)
+            elif filter_by_age == "two-or-more-years":
+                queries.append(["estimated_age__gt", "1"])
+                    
+            elif filter_by_age == "zero-to-two-months":
+                queries.append([
+                    "estimated_age_months__in", 
+                    ['0', '1', '2']
+                ])
+                
+                queries.append(["estimated_age__lt", '1'])
+
+            elif filter_by_age == "three-to-six-months":
+                queries.append([
+                    "estimated_age_months__in",
+                    ['3', '4', '5', '6']
+                ])
+
+                queries.append(["estimated_age__lt", '1'])
+                
+            elif filter_by_age == "seven-to-eleven-months":
+                queries.append([
+                    "estimated_age_months__in",
+                    ['7', '8', '9', '10', '11']
+                ])
+
+                queries.append(["estimated_age__lt", '1'])
+
+            elif filter_by_age == "one-to-two-years":
+                queries.append(["estimated_age__in", ['1', '2']])
+
+            # Deal with cases for species filtering
+            # Same as before, look at forms.py for options to handle
+            if filter_by_species == "any-species":
+                pass
+            else:
+                queries.append(["species__in", 
+                    [
+                        filter_by_species, 
+                        filter_by_species.capitalize(),
+                        filter_by_species.upper(),
+                    ]
+                ])
+                
+            queryset = Animal.objects
+
+            # Apply all filters
+            for lst in queries:
+                queryset = queryset.filter(lst)
+
+            # Apply ordering/sorting
+            queryset = queryset.order_by(order)
 
         # If the GET request is malformed, fall back on a default listing setup        
-        except (FieldError, ValidationError):
+        except (FieldError, ValidationError, ValueError):
             return default
 
         return queryset
+
+    # Adds our filter form from forms.py
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["filter_form"] = FilterForm(self.request.GET or None)
+            
+        context["order"] = str(self.request.GET.get("order")).replace("_", " ")
+        
+        age_filter = str(self.request.GET.get("filter_by_age"))
+        context["age_filter"] = age_filter.replace("-", " ")
+
+        species_filter = str(self.request.GET.get("filter_by_species"))
+        context["species_filter"] = species_filter
+        
+        return context
         
 
 class DetailView(generic.DetailView):

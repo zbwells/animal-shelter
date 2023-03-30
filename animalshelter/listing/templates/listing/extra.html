@@ -16,33 +16,32 @@
 <link rel="stylesheet" href="{% static '/style.css' %}"/>
 </head>
 
-<body>
+<body class="clearfix">
 {% if animal %}
-<h1>{{ animal.name }}</h1>
-<h2>More Pictures and Information</h2>
-
-<!-- Right aligned image of animal -->
-<div class="clearfix">
+	<!-- Right aligned image of animal -->
 	{% if animal.picture_set %}
 		{% for picture in animal.picture_set.all %}
-			<img class="floating" src="{{ picture.image.url }}"/>
+			<img class="floating fade-in" src="{{ picture.image.url }}"/>
 		{% endfor %}
 	{% endif %}
+
+	<h1>{{ animal.name }}</h1>
+	<h2>More Pictures and Information</h2>
 
 	<!-- List of boolean conditions related to the animal -->
 	<ul>
 	{% if animal.animaldetail.pregnant %} 
 		<li>Is pregnant</li> 
 	{% endif %}
-	
+
 	{% if animal.animaldetail.microchips %} 
 		<li>Is microchipped</li> 
 	{% endif %}
-	
+
 	{% if animal.animaldetail.good_with_people %} 
 		<li>Is good with people</li> 
 	{% endif %}
-	
+
 	{% if animal.animaldetail.good_with_same_species %} 
 		<li>Is good with other {{animal.species}}s</li> 
 	{% endif %}
@@ -77,7 +76,6 @@
 		<p>{{animal.animaldetail.condition_of_skin}}</p>
 		<br/>
 	{% endif %}
-</div>
 {% else %}
 	<h2>Animal's extra details are unviewable.</h2>
 	<p>Sorry.</p>

@@ -17,13 +17,12 @@ Animal Shelter -
 <link rel="stylesheet" href="{% static '/style.css' %}"/>
 </head>
 
-<body>
+<body class="clearfix">
 {% if animal %}
-<h1>{{ animal.name }}</h1>
 
-<!-- Right aligned image of animal -->
-<div class="clearfix">
-	<img class="floating" src="{{ animal.image.url }}"/>
+	<!-- Right aligned image of animal -->
+	<img class="floating fade-in" src="{{ animal.image.url }}"/>
+	<h1>{{ animal.name }}</h1>
 
 	<!-- Animal description -->
 	<p>{{ animal.notes }}</p>
@@ -38,9 +37,10 @@ Animal Shelter -
 	<p><b>Estimated Age: </b>{{ animal.estimated_age }}</p>
 
 	{% if animal.animaldetail %}
-	<p><a href="{% url 'extra' animal.id %}">More Pictures and Information</a></p>
+		<p><a href="{% url 'extra' animal.id %}">
+		More Pictures and Information
+		</a></p>
 	{% endif %}
-</div>
 
 {% else %}
 	<h2>Animal's details are unviewable.</h2>
