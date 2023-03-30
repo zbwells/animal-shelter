@@ -96,9 +96,9 @@ class IndexView(generic.ListView):
 
             # Apply ordering/sorting
             # If ordering by more than one thing, use starred expression
-            try:
+            if isinstance(order, list):
                 queryset = queryset.order_by(*order)
-            except TypeError:
+            elif isinstance(order, str):
                 queryset = queryset.order_by(order)
             
 
