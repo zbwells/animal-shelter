@@ -35,7 +35,7 @@ class IndexView(generic.ListView):
             
             # Handle age order case
             if order == "estimated_age":
-                order = ["estimated_age_months", "estimated_age"]
+                order = ["estimated_age", "estimated_age_months"]
             
             queries = []
             queries.append(["visible_on_website", True])
@@ -95,7 +95,12 @@ class IndexView(generic.ListView):
                 queryset = queryset.filter(lst)
 
             # Apply ordering/sorting
-            queryset = queryset.order_by(order)
+            # If ordering by more than one thing, use starred expression
+            try:
+                queryset = queryset.order_by(*order)
+            except TypeError:
+                queryset = queryset.order_by(order)
+            
 
         # If the GET request is malformed, fall back on a default listing setup        
         except (FieldError, ValidationError, ValueError):

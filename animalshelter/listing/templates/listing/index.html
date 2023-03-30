@@ -75,18 +75,22 @@ function autoToggle() {
 			{% else %}
 				<h3>{{ animal.species }}</h3>
 			{% endif %} 
-			<p>
-			{% if animal.breed %}
-				{{ animal.breed }}
-			{% endif %}
-			</p>
-			<p>
-			{{ animal.estimated_age }} years - 
-			{{ animal.estimated_age_months }} months
-			</p>
-			<img class="smaller fade-in" src="{{ animal.image.url }}"/>
-			<br/>
 		</a>
+	
+		<p>
+		{% if animal.breed %}
+			{{ animal.breed }}
+		{% endif %}
+		</p>
+		<p>
+		{% if animal.estimated_age != 0 %}
+			{{ animal.estimated_age }} years and 
+		{% endif %}  
+		{{ animal.estimated_age_months }} months
+		</p>
+		<a href="{% url 'detail' animal.id %}">
+			<img class="smaller fade-in" src="{{ animal.image.url }}"/>
+		<br/>
 	</div>
 	{% endfor %}
 </div>
