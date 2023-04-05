@@ -29,7 +29,8 @@ class FilterForm(forms.Form):
             ("three-to-six-months", "3 - 6 Months"),
             ("seven-to-eleven-months", "7 - 11 Months"),
             ("one-to-two-years", "1 - 2 Years"),
-            ("two-or-more-years", "2 or more Years")
+            ("two-or-more-years", "2 or more Years"),
+            ("three-or-more-years", "3 or more Years"),
         )
     )
 
@@ -39,7 +40,7 @@ class FilterForm(forms.Form):
         choices = (
             ("any-species", "Any"),
             ("dog", "Dogs"),
-            ("cat", "Cats")
+            ("cat", "Cats"),
         )
     )
            

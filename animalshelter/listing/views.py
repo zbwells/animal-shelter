@@ -47,6 +47,9 @@ class IndexView(generic.ListView):
                 
             elif filter_by_age == "two-or-more-years":
                 queries.append(["estimated_age__gt", "1"])
+
+            elif filter_by_age == "three-or-more-years":
+                queries.append(["estimated_age__gt", "2"])
                     
             elif filter_by_age == "zero-to-two-months":
                 queries.append([
