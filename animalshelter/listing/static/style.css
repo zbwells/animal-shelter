@@ -57,6 +57,11 @@ a {
 		width: 20em;
 		max-width: 100%;
 	}
+
+	.floating {
+		margin: 10px 5px 5px 10%;
+		float: right;
+	}
 }
 
 @media (orientation: portrait) {
@@ -72,11 +77,12 @@ a {
 		width: 22em;
 		max-width: 100%;
 	}
-}
-
-.floating {
-	margin: 10px 5px 5px 10%;
-	float: right;
+	
+	.floating {
+		margin-right: auto;
+		margin-left: auto;
+		float: right;
+	}
 }
 
 .clearfix::after {
