@@ -34,7 +34,11 @@ Animal Shelter -
 	<p><b>Weight:</b>	  	{{ animal.weight  		}}</p>
 	<p><b>Gender:</b>	  	{{ animal.gender  		}}</p>
 	<p><b>Intake Date:</b>	{{ animal.intake_date 	}}</p>
-	<p><b>Estimated Age: </b>{{ animal.estimated_age }}</p>
+	
+	<p><b>Estimated Age: </b>
+	{{ animal.estimated_age }} years and
+	{{ animal.estimated_age_months }} months
+	</p>
 
 	{% if animal.animaldetail %}
 		<p><a href="{% url 'extra' animal.id %}">
