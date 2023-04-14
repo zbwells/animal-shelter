@@ -1,6 +1,14 @@
+## Zander B. Wells <zbwells@protonmail.com>
+## Part of the Wise Animal Shelter Management System Project.
+##
+## Released under the terms of the MIT License.
+## See LICENSE for details.
+
 from django.test import TestCase
 from django.utils import timezone
 from .models import Animal
+
+# No comprehensive testing, but guarantees at least the base-line for functionality of the project.
 
 # Tests:
 class AnimalTest(TestCase):

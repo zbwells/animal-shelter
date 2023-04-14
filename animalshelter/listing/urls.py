@@ -1,3 +1,9 @@
+## Zander B. Wells <zbwells@protonmail.com>
+## Part of the Wise Animal Shelter Management System Project.
+##
+## Released under the terms of the MIT License.
+## See LICENSE for details.
+
 # File to contain all of the urls for the animal listings.
 
 from django.urls import path

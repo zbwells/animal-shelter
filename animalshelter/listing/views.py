@@ -1,3 +1,10 @@
+## Zander B. Wells <zbwells@protonmail.com>
+## Part of the Wise Animal Shelter Management System Project.
+##
+## Released under the terms of the MIT License.
+## See LICENSE for details.
+
+
 from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
