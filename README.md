@@ -12,7 +12,7 @@ As of the beginning of the project (January 2023), the shelter in Wise County do
 
 The project was started in January 2023 as a Senior Capstone project by Computer Science and Management Information Systems students at the University of Virginia's College at Wise, who wanted to collaborate with the local animal shelter to decrease the amount of work involved in running the shelter, as well as help with outreach to the local and surrounding communities. See [CONTRIBUTORS](./CONTRIBUTORS) for information on the individuals involved with the development of the project.
 
-While the system has been written with the Wise County Animal Shelter in mind, the intention is that the software be relatively easy to moify for usage with other shelter organizations. To this end, the project is released under the MIT License, which is a permissive free software license. See [LICENSE](./LICENSE) for details.
+While the system has been written with the Wise County Animal Shelter in mind, the intention is that the software be relatively easy to modify for usage with other shelter organizations. To this end, the project is released under the MIT License, which is a permissive free software license. See [LICENSE](./LICENSE) for details.
 
 ## Dependencies
 
