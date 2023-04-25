@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<!-- Page generated from a template designed by the Wise Animal Shelter Project. -->
+<!-- Any JavaScript in this document is released under the terms of the MIT License. -->
+  
+<!-- Template for the animal listing main page. -->
+<!-- If there are any animals in the database, loop through them and link to them. -->
+
+<html>
+
+<head>
+{% load static %}
+<title>Animal Listing</title>
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<!-- JavaScript to allow for interacting 
+with the filter/sorting interface -->
+<script>
+// Toggle whether elements are shown or hidden
+function toggleElements() {
+	for (id of arguments) {
+		let elem = document.getElementById(id);
+		
+		if (elem.style.display != "none") {
+			elem.style.display = "none";	
+		} else {
+			elem.style.display = "block";
+		}
+	}
+}
+
+// Use context to tell if filters have been used, if so, toggle automatically
+function autoToggle() {
+	if ("{{ order }}" != "None") {
+		toggleElements("showtext", "hiddentext");
+	}
+}
+</script>
+
+<body onload="autoToggle()">
+<h1>Animal Listing</h1>
+
+<span id="showtext">
+<a href="#" onclick="toggleElements('showtext', 'hiddentext'); return false;">
+<small class="innerbox">Show Filters</small>
+</a>
+</span>
+
+<span id="hiddentext" style="display: none;">
+<a href="#" onclick="toggleElements('showtext', 'hiddentext'); return false;">
+<small class="innerbox">Hide Filters</small>
+<br/><br/>
+</a>
+
+<!-- Filter form goes here -->
+<form method="get" action="." class="innerbox fade-in">
+{% if order != "None" %}
+	<small><a href="{% url 'index' %}">Reset Filters</a></small>
+{% endif %}
+
+{{ filter_form.as_p }}
+<input type="submit" value="Submit">
+</form>
+<!-- End of filter form -->
+
+</span>
+
+{% if animal_list %}
+<div class="cols">
+	<!-- Loop through every animal in the list and provide link to details page -->
+	{% for animal in animal_list %}
+	<div>
+		<br/>
+		<a href="{% url 'detail' animal.id %}">
+			{% if animal.name %}
+				<h3>{{ animal.name }}</h3>
+			{% else %}
+				<h3>{{ animal.species }}</h3>
+			{% endif %} 
+		</a>
+	
+		<p>
+		{% if animal.breed %}
+			{{ animal.breed }}
+		{% endif %}
+		</p>
+		<p>
+		{% if animal.estimated_age != 0 %}
+			{{ animal.estimated_age }} years and 
+		{% endif %}  
+		{{ animal.estimated_age_months }} months
+		</p>
+		<a href="{% url 'detail' animal.id %}">
+			<img class="smaller fade-in" src="{{ animal.image.url }}"/>
+		<br/>
+	</div>
+	{% endfor %}
+</div>
+
+{% else %}
+	<p>No animals found.</p>
+{% endif %}
+</body>
+
+</html>

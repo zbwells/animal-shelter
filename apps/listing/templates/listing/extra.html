@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<!-- Page generated from a template designed by the Wise Animal Shelter Project. -->
+<!-- Any JavaScript in this document is released under the terms of the MIT License. -->
+
+<!-- Template for viewing more information. -->
+
+<html>
+
+<head>
+{% load static %}
+<title>Animal Shelter - 
+{% if animal.name %}
+	{{ animal.name }} - More Information
+{% else %}
+	Error
+{% endif %}
+</title>
+<link rel="stylesheet" href="{% static '/style.css' %}"/>
+</head>
+
+<body class="clearfix">
+{% if animal %}
+	<!-- Right aligned image of animal -->
+	{% if animal.picture_set %}
+		{% for picture in animal.picture_set.all %}
+			<img class="floating fade-in" src="{{ picture.image.url }}"/>
+		{% endfor %}
+	{% endif %}
+
+	<h1>{{ animal.name }}</h1>
+	<h2>More Information</h2>
+
+	<!-- List of boolean conditions related to the animal -->
+	<ul>
+	{% if animal.animaldetail.pregnant %} 
+		<li>Is pregnant</li> 
+	{% endif %}
+
+	{% if animal.animaldetail.microchips %} 
+		<li>Is microchipped</li> 
+	{% endif %}
+
+	{% if animal.animaldetail.good_with_people %} 
+		<li>Is good with people</li> 
+	{% endif %}
+
+	{% if animal.animaldetail.good_with_same_species %} 
+		<li>Is good with other {{animal.species}}s</li> 
+	{% endif %}
+
+	{% if animal.animaldetail.bite_history %}
+		<li>Has a history of biting</li>
+	{% endif %}
+
+	{% if animal.animaldetail.surrendered_by_owner %}
+		<li>Was surrendered by owner</li>
+	{% endif %}
+
+	{% if animal.animaldetail.housebroken %}
+		<li>Is housebroken</li>
+	{% endif %}
+	</ul>
+
+	{% if animal.animaldetail.reason_for_surrender %}
+		<p><b>Reason for surrender: </b></p>
+		<p>{{animal.animaldetail.reason_for_surrender}}</p>
+		<br/>
+	{% endif %}
+
+	{% if animal.animaldetail.condition_of_teeth %}
+		<p><b>Condition of teeth: </b></p>
+		<p>{{animal.animaldetail.condition_of_teeth}}</p>
+		<br/>
+	{% endif %}
+
+	{% if animal.animaldetail.condition_of_skin %}
+		<p><b>Other conditions, such as skin conditions: </b></p>
+		<p>{{animal.animaldetail.condition_of_skin}}</p>
+		<br/>
+	{% endif %}
+{% else %}
+	<h2>Animal's extra details are unviewable.</h2>
+	<p>Sorry.</p>
+{% endif %}
+<br/>
+</body>
+
+</html>
