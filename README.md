@@ -1,6 +1,6 @@
 # Wise County Animal Shelter Management Project
 
-This is the public git instance for the Wise County ASMS (Animal Shelter Management System) project.
+This is the public git repository for the Wise County ASMS (Animal Shelter Management System) project.
 
 The project consists of multiple dynamic web applications (using the Django framework) which in tandem aim to provide a user-friendly web interface from which animal shelters can perform managerial tasks and provide information to the public.
 
