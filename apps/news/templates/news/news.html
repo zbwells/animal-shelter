@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<main role="main">
+
+<div class="jumbotron">
+	<div class="name"> <b>News and Announcements</b></div>
+</div>
+
+<br>
+<div class="innerbox fade-in">
+    {% if post_list %}
+	{% for Post in post_list %}
+	<div class="card"> 
+		{{Post.pub_date}}<br><br>
+		<img class="smaller" src="{{Post.image.url}}" />
+		<br><br> 
+		<div class="posttext">{{ Post.post_text}}</div> 
+		<br> <br>
+	<div class="bar"> <hr> </div>
+	{%endfor%}
+	{% else %}
+	<p>There are no news articles to display.</p>
+	{% endif %}
+</div>
+</main>
+{% endblock %}

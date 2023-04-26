@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Animal Shelter - Homepage {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<main>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron fade-in">
+		<div class="name"> <b>WISE COUNTY ANIMAL SHELTER</b><br> </div>
+		<a href="{% url 'home' %}">
+		    <img class="logo" src="{% static 'img/shelterlogo.svg' %}" />
+		</a>
+		<br><br>
+		<h1>Welcome!</h1> <br>
+        <p>This is the official site of the Wise County Animal Shelter located in Wise County, Virginia. Take a look around at our announcements and news, get to know us on our about us page, or view our current residents to find your new best friend. </p>
+</div> <!-- /container -->
+</main>
+
+{% endblock %}

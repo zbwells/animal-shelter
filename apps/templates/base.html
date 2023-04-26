@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+{% load static %}
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+<nav class="navbar">
+    <a class="navlink" href="/">Home</a> 
+    <a class="navlink" href="/about">About Us</a>
+    <a class="navlink" href="/news">News</a>
+    <a class="navlink" href="/listing">Adoptable Animals</a>
+    <a class="navlink" href="/contact">Contact Us</a>
+</nav>
+
+<!-- "block content" is where the html from other templates will be included once they are extended from this one. -->
+{% block content %}
+{% endblock %}
+
+<nav class="navbar2">
+    <a href="https://www.wisecounty.org/157/Animal-Control">Animal Control Information &emsp;</a> <br>
+    <a href="https://ophrescue.org/resources">Adoption Resources &emsp;</a> <br>
+    <a href="/admin">Shelter Employee Login &emsp;</a> <br>
+</nav>
+</body>
+
+</html>

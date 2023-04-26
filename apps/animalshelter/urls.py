@@ -18,11 +18,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
 ## For now, putting our admin site modifications here
 admin.site.site_header = "Animal Shelter Web Management"
 
 urlpatterns = [
+    path("", include("frontpage.urls")),
     path("admin/", admin.site.urls),
     path("listing/", include("listing.urls")),
+    path("news/", include("news.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

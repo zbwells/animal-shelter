@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-
 <!-- Page generated from a template designed by the Wise Animal Shelter Project. -->
 <!-- Any JavaScript in this document is released under the terms of the MIT License. -->
 
 <!-- Template for viewing more information. -->
+{% extends "base.html" %}
 
-<html>
-
-<head>
-{% load static %}
-<title>Animal Shelter - 
+{% block title %}
+Animal Shelter - 
 {% if animal.name %}
 	{{ animal.name }} - More Information
 {% else %}
 	Error
 {% endif %}
-</title>
-<link rel="stylesheet" href="{% static '/style.css' %}"/>
-</head>
+{% endblock %}
 
-<body class="clearfix">
+{% block content %}
+<br><div class="name"><b>{{ animal.name }}</b></div><br>
+<main class="innerbox clearfix">
 {% if animal %}
 	<!-- Right aligned image of animal -->
 	{% if animal.picture_set %}
@@ -28,7 +24,6 @@
 		{% endfor %}
 	{% endif %}
 
-	<h1>{{ animal.name }}</h1>
 	<h2>More Information</h2>
 
 	<!-- List of boolean conditions related to the animal -->
@@ -84,6 +79,5 @@
 	<p>Sorry.</p>
 {% endif %}
 <br/>
-</body>
-
-</html>
+</main>
+{% endblock %}

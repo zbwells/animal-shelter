@@ -1,31 +1,27 @@
-<!DOCTYPE html>
-
 <!-- Page generated from a template designed by the Wise Animal Shelter Project. -->
 <!-- Any JavaScript in this document is released under the terms of the MIT License. -->
 
 <!-- Template for viewing information on a particular animal. -->
 
-<html>
+{% extends "base.html" %}
 
-<head>
-{% load static %}
-<title>
+{% block title %}
 Animal Shelter - 
 {% if animal %}
 	{{ animal.name }}
 {% else %}
 	Error
 {% endif %}
-</title>
-<link rel="stylesheet" href="{% static '/style.css' %}"/>
-</head>
+{% endblock %}
 
-<body class="clearfix">
+{% block content %}
+<br><div class="name"><b>{{ animal.name }}</b></div><br>
+<main class="clearfix innerbox listingtext">
 {% if animal %}
 
 	<!-- Right aligned image of animal -->
+
 	<img class="floating fade-in" src="{{ animal.image.url }}"/>
-	<h1>{{ animal.name }}</h1>
 
 	<!-- Animal description -->
 	<p>{{ animal.notes }}</p>
@@ -55,6 +51,5 @@ Animal Shelter -
 {% endif %}
 
 <br/>
-</body>
-
-</html>
+</main>
+{% endblock %}
