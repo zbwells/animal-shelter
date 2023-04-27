@@ -2,7 +2,7 @@ html {
     background-image: url("https://cdn.pixabay.com/photo/2015/05/19/17/23/mountains-773920_960_720.jpg");
 	background-size: cover;  
 	background-repeat: no-repeat;
-	background-color: #CBCBCB;
+	background-color: #B5B5B5;
 	background-blend-mode: multiply;
 	background-attachment: fixed;
 	font-size: 14px; !important;
@@ -49,8 +49,14 @@ input:active, select:active {
     background-color: rgb(255, 255, 255, 0.05);
 }
 
+@font-face {
+ font-family: 'Cantarell';
+ src: local("../fonts/Cantarell-Regular.otf") format('opentype');
+}
+
 body {
-	font-family: 'Cantarell';font-size: 1.3em;
+	font-family: 'Cantarell';
+	font-size: 1.3em;
 	margin:0px;
 	margin-bottom: 10em;
 }
@@ -93,7 +99,7 @@ img {
     text-align: center;
 	padding:10px;
 	box-shadow: 0 0 0 500em inset rgb(255,255,255,.2);
-	font-family: 'Cantarell';font-size: 1.1em;
+	font-size: 1.1em;
 	/* border: */
 }
 
@@ -101,7 +107,7 @@ img {
 	padding:10px;
 	padding-bottom:17px;
 	box-shadow: 0 0 0 500em inset rgb(0,0,0,.5);
-	font-family: 'Cantarell';font-size: 15px;
+	font-size: 15px;
 	text-align: left;
 	color: lightgrey;
 	bottom: 0%;
