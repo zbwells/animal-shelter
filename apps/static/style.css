@@ -136,16 +136,6 @@ nav a:hover {
 	margin-top:0px;
 }
 
-.Welcome{
-	font-size: 30px;
-	text-align:left;
-	}
-	
-.wmessage{
-	text-align: left;
-	width: 60%;
-	}
-
 .innerinnerbox {
     text-align: left;
 	border-radius: 10px;
@@ -180,12 +170,7 @@ nav a:hover {
     margin-top: 0px;
 }
 
-.name1 {
-	font-size: 5em;
-    text-align: right; 
-    color: white;
-    margin-top: 0px;
-}
+
 
 .contactlink {
 	color: white;
@@ -214,6 +199,23 @@ nav a:hover {
 		float: right;
 		width: 50%;
 	}
+	
+	.name1 {
+	    font-size: 5em;
+        text-align: right; 
+        color: white;
+        margin-top: 0px;
+    }
+    
+    .Welcome {
+	    font-size: 30px;
+	    text-align:left;
+	}
+	
+    .wmessage {
+	    text-align: left;
+	    width: 60%;
+    }
 }
 
 @media (orientation: portrait) {
@@ -234,6 +236,22 @@ nav a:hover {
 		margin-right: auto;
 		margin-left: auto;
 	}
+	
+	.name1 {
+	    font-size: 3em;
+        text-align: center; 
+        color: white;
+        margin-top: 0px;
+    }
+    
+    .Welcome {
+	    font-size: 30px;
+	    text-align: center;
+	}
+	
+    .wmessage {
+	    text-align: center;
+    }
 }
 
 .clearfix::after {
