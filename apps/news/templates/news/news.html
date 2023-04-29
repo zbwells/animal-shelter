@@ -18,7 +18,7 @@
 	{% for Post in post_list %}
 	<div class="card"> 
 		{{Post.pub_date}}<br><br>
-		{% if Post.image.url %}
+		{% if Post.image %}
 		<img class="smaller" src="{{Post.image.url}}" />
 		<br><br> 
 		{% endif %}
